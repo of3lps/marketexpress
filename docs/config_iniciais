@@ -1,0 +1,85 @@
+# Configuração do Ambiente de Desenvolvimento
+
+## **1️⃣ Definição das Versões**
+Para garantir estabilidade e evitar conflitos de dependências, utilizamos as seguintes versões:
+
+### **📌 Linguagens e Frameworks**
+- **Node.js**: `v18.17.0` *(LTS estável para NestJS)*
+- **Python**: `3.11.6` *(Compatível com FastAPI e dependências recentes)*
+- **PostgreSQL**: `15` *(Última versão estável usada em produção)*
+- **Docker**: `24.0.5` *(Última versão LTS no momento)*
+- **Kotlin**: `1.9.0` *(Para o app da maquininha PAX A920)*
+- **Gradle**: `8.3` *(Build system para Android)*
+- **Next.js**: `14.0.2` *(Última versão com suporte estável)*
+
+---
+
+## **2️⃣ Configuração do Backend**
+
+### **🔹 Node.js com NestJS**
+```bash
+nvm install 18.17.0  # Garante a versão correta do Node.js
+nvm use 18.17.0
+npm init -y
+npm install @nestjs/cli@10.0.0 -g  # Definir a versão do NestJS
+nest new .
+```
+
+### **🔹 Python com FastAPI** *(alternativa ao NestJS)*
+```bash
+pyenv install 3.11.6  # Se estiver usando pyenv
+pyenv global 3.11.6
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
+pip install fastapi==0.103.1 uvicorn==0.23.2
+```
+
+---
+
+## **3️⃣ Configuração do Banco de Dados**
+Se estiver usando **Docker**, defina a versão correta no `docker-compose.yml`:
+```yaml
+db:
+  image: postgres:15
+  restart: always
+  environment:
+    POSTGRES_USER: user
+    POSTGRES_PASSWORD: password
+    POSTGRES_DB: mercado_autonomo
+  ports:
+    - "5432:5432"
+```
+
+Se for instalar localmente:
+```bash
+sudo apt install postgresql-15  # Linux
+brew install postgresql@15      # Mac
+```
+
+---
+
+## **4️⃣ Configuração do Frontend**
+```bash
+npx create-next-app@14.0.2 .
+npm install
+```
+
+---
+
+## **5️⃣ Configuração do App na Maquininha (Android com Kotlin)**
+No **Android Studio**, vá em **Preferences > Kotlin Compiler** e defina:
+- **Kotlin version**: `1.9.0`
+- **Gradle version**: `8.3`
+
+Se precisar instalar manualmente:
+```bash
+sdk install kotlin 1.9.0
+sdk install gradle 8.3
+```
+
+---
+
+Agora tudo está configurado corretamente! 🚀
+
+
